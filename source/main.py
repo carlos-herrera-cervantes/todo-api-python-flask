@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from datetime import datetime
 
 from routes.user_routes import user_router
@@ -25,5 +25,9 @@ def index():
                 'date': datetime.utcnow()
             } 
         })
+
+@app.route('/api-docs')
+def get_docs():
+    return render_template('swaggerui.html');
 
 app.run()
